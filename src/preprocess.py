@@ -1,15 +1,13 @@
 
 import re
 import nltk
-from nltk.corpus import stopwords
+
+nltk.data.path.append("/tmp/nltk_data")
 
 try:
-    stop_words = set(stopwords.words("english"))
+    nltk.data.find("corpora/stopwords")
 except LookupError:
     nltk.download("stopwords", download_dir="/tmp/nltk_data")
-    nltk.data.path.append("/tmp/nltk_data")
-    stop_words = set(stopwords.words("english"))
-
 def clean_text(text):
     text = text.lower()
     text = re.sub(r'[^a-zA-Z ]',' ',text)
