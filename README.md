@@ -190,7 +190,7 @@ Real News / Fake News
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/FakeNews-AI.git
+git clone https://github.com/MobeenFatimaa/FakeNews-Detection-Application
 ```
 
 Go to the project
