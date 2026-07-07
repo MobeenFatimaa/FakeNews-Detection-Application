@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+content="AI-powered Fake News Detection using TF-IDF and Logistic Regression.">
+<title>FakeNews AI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+<div id="cursorGlow"></div>
+<div class="background"></div>
+
+<nav>
+
+<div class="logo">
+
+<img src="{{ url_for('static', filename='images/logo.png') }}">
+
+<h2>FakeNews <span>AI</span></h2>
+
+</div>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#features">Features</a></li>
+
+<li><a href="#stats">Statistics</a></li>
+
+<li><a href="#about">About</a></li>
+
+</ul>
+
+<button class="themeBtn">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+</nav>
+
+<section class="hero">
+
+<div class="heroContent">
+
+<div class="heroText">
+
+<h1>
+Detect Fake News
+<span>Using Machine Learning</span>
+</h1>
+
+<p>
+Powered by TF-IDF and Logistic Regression with Natural Language Processing for fast and accurate fake news detection.
+</p>
+
+<div class="badges">
+
+<div class="badge">
+<i class="fa-solid fa-brain"></i>
+AI Powered
+</div>
+
+<div class="badge">
+<i class="fa-solid fa-microchip"></i>
+TF-IDF + Logistic Regression
+</div>
+
+<div class="badge">
+<i class="fa-solid fa-shield-halved"></i>
+97.9% Accuracy
+</div>
+
+</div>
+
+</div>
+
+<div class="glass analyzerCard">
+
+<h2>
+<i class="fa-solid fa-newspaper"></i>
+Analyze News
+</h2>
+
+<textarea
+id="news"
+maxlength="5000"
+placeholder="Paste complete news article here..."></textarea>
+
+<div class="textInfo">
+
+<span id="charCount">
+0 / 5000 Characters
+</span>
+
+<button class="copyBtn" onclick="pasteExample()">
+Use Example
+</button>
+
+</div>
+
+<div class="buttons">
+
+<button onclick="predictNews()">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+Analyze News
+</button>
+
+<button onclick="clearText()">
+<i class="fa-solid fa-trash"></i>
+Clear
+</button>
+
+</div>
+
+<div id="loader" class="loader">
+
+<div class="spinner"></div>
+
+<span id="loaderText">
+Analyzing using AI...
+</span>
+
+</div>
+
+<!-- RESULT CARD -->
+
+<div id="resultCard"
+     class="resultCard"
+     style="display:none;">
+
+    <div class="resultHeader">
+
+        <i id="predictionIcon"
+           class="fa-solid fa-circle-check realIcon"></i>
+
+        <h2 id="predictionLabel">
+
+            REAL NEWS
+
+        </h2>
+
+    </div>
+
+
+    <div class="confidenceCircle">
+
+        <svg width="130" height="130">
+
+            <circle
+                cx="65"
+                cy="65"
+                r="50"
+                class="circleBackground">
+            </circle>
+
+            <circle
+                id="circleProgress"
+                cx="65"
+                cy="65"
+                r="50"
+                class="circleProgress"
+                stroke-dasharray="314"
+                stroke-dashoffset="314">
+            </circle>
+
+        </svg>
+
+        <div class="circleText">
+
+            <span id="confidencePercent">
+
+                0%
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="confidenceInfo">
+
+        <h3 id="confidenceText">
+
+            Confidence : 0%
+
+        </h3>
+
+    </div>
+
+
+    <div class="progressContainer">
+
+        <div
+            id="progressBar"
+            class="progressBar">
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="features" class="features">
+
+<h1>Why Choose FakeNews AI?</h1>
+
+<div class="cards">
+
+<div class="card">
+    <div class="iconBox">
+        <i class="fa-solid fa-brain"></i>
+    </div>
+
+    <h3>AI Powered Detection</h3>
+
+    <p>
+        Uses TF-IDF and Logistic Regression with Natural Language Processing
+        for fast and accurate fake news detection.
+    </p>
+</div>
+
+<div class="card">
+    <div class="iconBox">
+        <i class="fa-solid fa-bolt"></i>
+    </div>
+
+    <h3>Real-Time Analysis</h3>
+
+    <p>
+        Analyze complete news articles within seconds using
+        optimized AI inference.
+    </p>
+</div>
+
+<div class="card">
+    <div class="iconBox">
+        <i class="fa-solid fa-lock"></i>
+    </div>
+
+    <h3>Privacy First</h3>
+
+    <p>
+        Your news content stays private and is never stored
+        after prediction.
+    </p>
+</div>
+
+<div class="card">
+    <div class="iconBox">
+        <i class="fa-solid fa-chart-line"></i>
+    </div>
+
+    <h3>Confidence Score</h3>
+
+    <p>
+        View prediction confidence together with AI-generated
+        classification results.
+    </p>
+</div>
+
+</div>
+
+</section>
+<section id="stats" class="stats">
+
+<h1>Model Performance</h1>
+
+<div class="cards">
+
+    <!-- Accuracy -->
+
+    <div class="stat">
+
+        <div class="statIcon">
+            <i class="fa-solid fa-bullseye"></i>
+        </div>
+
+        <h2 class="counter"
+            data-target="97.9"
+            data-suffix="%">
+            0%
+        </h2>
+
+        <p>Model Accuracy</p>
+
+        <div class="stars">
+
+            ★★★★★
+
+        </div>
+
+    </div>
+
+
+    <!-- Speed -->
+
+    <div class="stat">
+
+        <div class="statIcon">
+            <i class="fa-solid fa-gauge-high"></i>
+        </div>
+
+        <h2 class="counter"
+            data-target="1.3"
+            data-suffix=" sec">
+
+            0 sec
+
+        </h2>
+
+        <p>Average Analysis Time</p>
+
+    </div>
+
+
+    <!-- Articles -->
+
+    <div class="stat">
+
+        <div class="statIcon">
+            <i class="fa-solid fa-newspaper"></i>
+        </div>
+
+        <h2 class="counter"
+            data-target="50000"
+            data-suffix="+">
+
+            0+
+
+        </h2>
+
+        <p>Articles Processed</p>
+
+    </div>
+
+
+    <!-- Model -->
+
+    <div class="stat">
+
+        <div class="statIcon">
+            <i class="fa-solid fa-microchip"></i>
+        </div>
+
+        <h2>Logistic Regression</h2>
+
+        <p>TF-IDF + Machine Learning</p>
+
+      <span class="version">
+
+TF-IDF + Logistic Regression
+
+</span>
+
+    </div>
+
+</div>
+
+</section>
+<section class="history">
+
+    <div class="historyHeader">
+
+        <h1>
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Recent Predictions
+        </h1>
+
+        <button onclick="clearHistory()">
+            <i class="fa-solid fa-trash"></i>
+            Clear History
+        </button>
+
+    </div>
+
+    <div id="historyList">
+
+        <div class="historyEmpty">
+
+            No predictions yet.
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer id="about">
+
+    <div class="footerContent">
+
+        <h2>FakeNews <span>AI</span></h2>
+
+        <p class="footerDesc">
+            AI-powered Fake News Detection System using TF-IDF, Logistic Regression,
+and Natural Language Processing to identify fake news quickly and accurately.
+</p>
+
+       <div class="techStack">
+
+<span>TF-IDF</span>
+
+<span>Logistic Regression</span>
+
+<span>Flask</span>
+
+<span>NLTK</span>
+
+<span>Python</span>
+
+<span>Machine Learning</span>
+
+</div>
+
+        <div class="footerIcons">
+
+            <a href="https://github.com/MobeenFatimaa"><i class="fab fa-github"></i></a>
+
+            <a href="https://www.linkedin.com/in/mobeen-fatima-599a35347/"><i class="fab fa-linkedin"></i></a>
+
+            <a href="mailto:fatimahmobeen47@gmail.com"><i class="fas fa-envelope"></i></a>
+
+        </div>
+
+        <p class="copyright">
+
+           © 2026 FakeNews AI • Developed by Mobeen Fatima • Built with Flask, TF-IDF & Logistic Regression
+
+        </p>
+
+    </div>
+
+</footer>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<div id="toast" class="toast">
+
+Prediction Copied Successfully
+
+</div>
+</body>
+
+</html>
