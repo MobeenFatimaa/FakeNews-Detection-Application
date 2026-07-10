@@ -1,12 +1,22 @@
 # FakeNews AI
 
-<div align="center">
-[![Kaggle Notebook](https://img.shields.io/badge/Kaggle-Notebook-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/code/mobeenfatimah/fake-news-detection-97-1-accuracy)
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
-![Flask](https://img.shields.io/badge/Flask-Web_App-black?style=for-the-badge&logo=flask)
-![Scikit Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge&logo=scikitlearn)
-![NLP](https://img.shields.io/badge/NLP-TF--IDF-green?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge)
+<p align="center">
+
+<a href="https://www.kaggle.com/code/mobeenfatimah/fake-news-detection-97-1-accuracy">
+<img src="https://img.shields.io/badge/Kaggle-Notebook-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white">
+</a>
+
+<img src="https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge&logo=python">
+
+<img src="https://img.shields.io/badge/Flask-Web_App-black?style=for-the-badge&logo=flask">
+
+<img src="https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge&logo=scikitlearn">
+
+<img src="https://img.shields.io/badge/NLP-TF--IDF-green?style=for-the-badge">
+
+<img src="https://img.shields.io/badge/Accuracy-97.17%25-success?style=for-the-badge">
+
+</p>
 
 ### AI-Powered Fake News Detection System
 
