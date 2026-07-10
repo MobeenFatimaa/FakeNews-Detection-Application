@@ -1,7 +1,7 @@
 # FakeNews AI
 
 <div align="center">
-
+[![Kaggle Notebook](https://img.shields.io/badge/Kaggle-Notebook-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/code/mobeenfatimah/fake-news-detection-97-1-accuracy)
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-Web_App-black?style=for-the-badge&logo=flask)
 ![Scikit Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge&logo=scikitlearn)
@@ -266,7 +266,11 @@ The application provides:
 - Live News API Integration
 
 ---
+## Kaggle Notebook
 
+View the complete machine learning notebook on Kaggle:
+
+(https://www.kaggle.com/code/mobeenfatimah/fake-news-detection-97-1-accuracy)
 # Developer
 
 **Mobeen Fatima**
